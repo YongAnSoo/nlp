@@ -56,6 +56,32 @@ python code/common/export_failures.py \
 - **full 模式**：套件里的全部用例。
 - 两种都跑，报告里分开写。
 
+## 成员 A 进度（2026-11-04 核对）
+
+A 在 Kaggle（2×T4）上完成了 BERT / RoBERTa 在 `tests_n500` 全部 87,470 条上的推理与 38 项打分（打分环境 Python 3.7.12）。
+用作者公开预测复算表 1 的 17 项 × 2 个模型，与论文一致（脚本内断言通过）。
+核对结果：
+- 参考文件与官方 release 逐字节一致；
+- A 的预测与本仓库 `code/sentiment/neutral.py` 重算结果 100% 一致（概率差 ≤5e-13，来自 12 位小数舍入）。
+
+有一个值得写进报告的现象：落在中性带（P(pos) ∈ (1/3, 2/3)）的样本数，A 的模型明显多于作者的模型。
+
+| 模型 | 作者公开预测 | A 的预测（textattack） |
+|---|---:|---:|
+| BERT | 2,228 | 5,871 |
+| RoBERTa | 5,489 | 7,999 |
+
+用中性阈值消融检验这对失败率差异的影响。不用重跑模型，两步都在环境 E 里做：
+
+```bash
+python code/sentiment/neutral_ablation.py make --p-pos <A的>/bert_own_positive_probs.npy \
+    --label bert-textattack --out results/sentiment/bert-textattack/released/neutral_ablation
+python code/sentiment/neutral_ablation.py score --dir results/sentiment/bert-textattack/released/neutral_ablation \
+    --suite <A的>/reference/sentiment_suite.pkl --inputs <A的>/reference/tests_n500
+```
+
+A 还需补：SST-2 验证集准确率（基线）、逐用例结果 `per_example.jsonl.gz`（用 `evaluate_suite.py` 读 A 的预测文件即可）、INV/DIR 类案例及「错误类型 / 解释」两列。
+
 B 的 RoBERTa-QQP 需要自己微调（全部训练集，3 个种子）：
 
 ```bash

@@ -20,7 +20,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from common.paths import ensure_dir  # noqa: E402
+from common.paths import ensure_dir, rel  # noqa: E402
 
 
 def read_rows(path):
@@ -71,7 +71,7 @@ def build(runs, out_prefix, title="CheckList 失败率对照", with_delta=True):
         w.writeheader()
         for r in out_rows:
             w.writerow(r)
-    md = ["# %s" % title, "", "数值为失败率（%）。来源：" + "；".join("%s=`%s`" % (l, p) for l, p in runs), "",
+    md = ["# %s" % title, "", "数值为失败率（%）。来源：" + "；".join("%s=`%s`" % (l, rel(p)) for l, p in runs), "",
           "| " + " | ".join(header) + " |", "|" + "|".join(["---"] * 3 + ["---:"] * (len(header) - 3)) + "|"]
     for r in out_rows:
         md.append("| " + " | ".join(str(r[h]).replace("|", "\\|") for h in header) + " |")
