@@ -21,13 +21,13 @@ ablation_margins: [0.0, 0.1, 0.2, 0.3333333333333333, 0.4, 0.5]
 models:
   bert-textattack:
     hf_id: textattack/bert-base-uncased-SST-2
-    revision: null
+    revision: 95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2   # 成员 A 实际使用的 commit
     kind: binary
     positive_index: 1          # textattack 的 GLUE 模型沿用 GLUE 标签：0=negative, 1=positive；用 validate_sst2.py 核实
     paper_counterpart: bert    # 对应作者公开预测 release_data/sentiment/predictions/bert
   roberta-textattack:
     hf_id: textattack/roberta-base-SST-2
-    revision: null
+    revision: 84ee248b91053ef5d0c748bbac4edfba1cf89584   # 成员 A 实际使用的 commit
     kind: binary
     positive_index: 1
     paper_counterpart: roberta
