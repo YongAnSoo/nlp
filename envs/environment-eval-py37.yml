@@ -1,0 +1,24 @@
+# =====================================================================
+# 环境 E（eval）：只用来「加载官方 *_suite.pkl + 对预测文件打分」
+#
+# 为什么要 Python 3.7：
+#   release_data 里的 sentiment/qqp/squad_suite.pkl 用 dill 序列化了期望函数（expectation
+#   function）的字节码。静态检查（不执行）显示，pkl 里的 CodeType 参数是 Python≤3.7 的布局
+#   （没有 3.8 新增的 posonlyargcount），SQuAD 套件的字节码甚至像 3.6 编译的。
+#   Python≥3.8 反序列化会报 `TypeError: an integer is required (got type bytes)` 一类错误。
+#   如果 3.7 上能加载但「官方预测复算」的数值和论文对不上，再试 python=3.6。
+#
+# 用法：
+#   conda env create -f envs/environment-eval-py37.yml
+#   conda activate checklist-eval37
+#   bash code/setup/install_checklist_eval.sh      # 安装 checklist 本体（--no-deps）
+# =====================================================================
+name: checklist-eval37
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - pip
+  - pip:
+      - -r requirements-eval-py37.txt

@@ -1,0 +1,47 @@
+# 成员 B：QQP 重复问题识别（原文 表 2）
+task: qqp
+
+inference:
+  batch_size: 64
+  max_length: 128
+  seed: 42
+  device: auto
+
+# kind:
+#   binary        —— 二分类，duplicate_index 指「重复」那一维（GLUE：1 = duplicate）
+#   single_logit  —— 只输出 1 个 logit 的 cross-encoder，P(dup) = sigmoid(logit)
+models:
+  bert-textattack:
+    hf_id: textattack/bert-base-uncased-QQP
+    revision: null
+    kind: binary
+    duplicate_index: 1
+    paper_counterpart: bert
+  roberta-finetuned:
+    # 作者用的是在 QQP 上微调的 RoBERTa-base。HF 上没有确认过的同款权重时，用本仓库脚本自己微调：
+    #   python code/common/finetune_glue.py --task qqp --model roberta-base --seed 42
+    # 微调完成后这里指向本地目录（checkpoints/ 不入库）。三个种子分别是 seed42/43/44。
+    local_path: checkpoints/qqp/roberta-base-seed42/best
+    kind: binary
+    duplicate_index: 1
+    paper_counterpart: roberta
+  # 其他候选（使用前请在 HF 页面确认存在、训练数据与标签含义，并在报告里写明来源）：
+  #   cross-encoder/quora-roberta-base   (kind: single_logit；注意其训练集可能覆盖 GLUE QQP 验证集)
+
+validation:
+  dataset: nyu-mll/glue
+  config: qqp
+  split: validation            # 40,430 对，全部使用
+  threshold: 0.5               # P(dup) ≥ 0.5 判为重复
+
+# 微调设置（code/common/finetune_glue.py）
+finetune:
+  base_models: [bert-base-uncased, roberta-base]
+  seeds: [42, 43, 44]          # 课程要求：关键训练对照用 3 个种子
+  learning_rate: 2.0e-5
+  batch_size: 32
+  epochs: 3
+  max_length: 128
+  warmup_ratio: 0.06
+  weight_decay: 0.01
+  train_split: train           # 363,846 对，全部使用；不在验证集上训练

@@ -1,0 +1,58 @@
+# 成员 A：情感分析（原文 表 1 + 图 1）
+# 模型在「环境 M」里推理 -> 预测文件；打分在「环境 E」里做（见 README）。
+task: sentiment
+
+inference:
+  batch_size: 64
+  max_length: 128        # 套件句子都很短；被截断的条数会记录进 run_meta.json
+  seed: 42               # 推理本身是确定性的，记录种子只为可复查
+  device: auto           # auto = cuda > npu > mps > cpu
+
+# 二分类模型 -> 三分类的中性阈值（见 code/sentiment/neutral.py）
+# 1/3 是从作者公开预测中反推得到的规则：P(pos) ∈ (1/3, 2/3) 判为中性
+neutral_margin: 0.3333333333333333
+# 消融：只改变中性带宽度，其余不变（不需要重新跑模型，直接用 raw_probs.tsv 重算）
+ablation_margins: [0.0, 0.1, 0.2, 0.3333333333333333, 0.4, 0.5]
+
+# 模型列表。kind:
+#   binary     —— 二分类（SST-2），positive_index 指 logits 里「正面」那一维
+#   three_way  —— 本身就是三分类，label_indices 给出 负/中/正 对应的维度
+# revision 建议在确认可用后固定为具体 commit（run_meta.json 会记录实际 commit_hash）
+models:
+  bert-textattack:
+    hf_id: textattack/bert-base-uncased-SST-2
+    revision: null
+    kind: binary
+    positive_index: 1          # textattack 的 GLUE 模型沿用 GLUE 标签：0=negative, 1=positive；用 validate_sst2.py 核实
+    paper_counterpart: bert    # 对应作者公开预测 release_data/sentiment/predictions/bert
+  roberta-textattack:
+    hf_id: textattack/roberta-base-SST-2
+    revision: null
+    kind: binary
+    positive_index: 1
+    paper_counterpart: roberta
+  # ---- 可选：现代模型（成员 A 的「可选加测」）----
+  distilbert-sst2:
+    hf_id: distilbert/distilbert-base-uncased-finetuned-sst-2-english
+    revision: null
+    kind: binary
+    positive_index: 1          # id2label: 0=NEGATIVE, 1=POSITIVE
+  twitter-roberta-3way:
+    hf_id: cardiffnlp/twitter-roberta-base-sentiment-latest
+    revision: null
+    kind: three_way            # 原生三分类，不经过中性阈值
+    label_indices: {negative: 0, neutral: 1, positive: 2}
+
+# 标准验证集（基线指标：「准确率高」的那一面）
+validation:
+  dataset: nyu-mll/glue        # 若旧版 datasets 找不到，可改成 glue
+  config: sst2
+  split: validation            # 872 条，全部使用
+
+# 可选：通过 OpenAI 兼容接口测一个大模型（code/sentiment/predict_sentiment_api.py）
+# API Key 只从环境变量 LLM_API_KEY 读取，不要写进任何文件
+api:
+  base_url_env: LLM_API_BASE   # 例如 https://api.deepseek.com
+  model_env: LLM_MODEL         # 例如 deepseek-chat
+  temperature: 0
+  max_workers: 4

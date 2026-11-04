@@ -1,0 +1,11 @@
+# 环境 E（Python 3.7）的最小依赖：只做 suite 加载 + 打分，不装 torch/transformers。
+# checklist 本体在装完这些之后用 `pip install checklist==0.0.11 --no-deps --no-build-isolation` 安装
+# （code/setup/install_checklist_eval.sh 会做这件事）。
+numpy>=1.18,<1.22        # pkl 里引用 numpy.core._multiarray_umath（需要 numpy>=1.16）
+dill>=0.3.1,<0.3.7       # 0.3.6 是最后一个支持 3.7 的版本；作者 2020 年用的是 0.3.1.x
+munch>=2.5,<3            # squad_suite.pkl 里引用 munch.Munch
+ipython>=7,<8            # checklist.viewer 需要
+ipywidgets>=7.5,<8       # checklist.viewer 需要
+traitlets
+notebook<7               # checklist 的 setup.py 安装钩子会 import notebook.nbextensions
+jupyter

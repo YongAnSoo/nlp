@@ -1,0 +1,38 @@
+# 成员 C：SQuAD 阅读理解（原文 表 3）
+task: squad
+
+inference:
+  batch_size: 32
+  seed: 42
+  device: auto
+  chunk_size: 2048             # 每次交给 pipeline 的条数（只影响进度条与内存，不影响结果）
+
+# transformers question-answering pipeline 参数
+# 作者的 BERT 用 SQuAD v1.1 微调；v1.1 没有「无答案」，所以 handle_impossible_answer=false
+pipeline:
+  max_answer_len: 30           # 与 BERT 官方 run_squad 的 max_answer_length 一致（pipeline 默认是 15）
+  max_seq_len: 384
+  doc_stride: 128
+  max_question_len: 64
+  handle_impossible_answer: false
+
+models:
+  bert-large-wwm:
+    # 本组选定（成员 C）。旧 ID bert-large-uncased-whole-word-masking-finetuned-squad 会重定向到这里
+    hf_id: google-bert/bert-large-uncased-whole-word-masking-finetuned-squad
+    revision: null
+    paper_counterpart: bert      # 对应作者公开预测 release_data/squad/predictions/bert；模型规模请对照原文核实
+  # ---- 可选对照 ----
+  bert-csarron:
+    hf_id: csarron/bert-base-uncased-squad-v1   # BERT-base，SQuAD v1.1
+    revision: null
+  distilbert-squad:
+    hf_id: distilbert/distilbert-base-cased-distilled-squad
+    revision: null
+  roberta-deepset-squad2:
+    hf_id: deepset/roberta-base-squad2          # 在 SQuAD 2.0 上训练，与原文设置不同，报告中需注明
+    revision: null
+
+validation:
+  dataset: rajpurkar/squad      # 若旧版 datasets 找不到，可改成 squad
+  split: validation             # 10,570 条，全部使用；EM / F1 用官方 v1.1 归一化

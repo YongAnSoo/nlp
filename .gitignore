@@ -1,0 +1,32 @@
+# --- Python / 环境 ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv*/
+venv*/
+.env
+.env.*
+*.egg-info/
+
+# --- 大文件：不入库，按 data/README.md 下载 ---
+data/raw/
+data/generated/
+checkpoints/
+hf_cache/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.tar.gz
+*.zip
+
+# --- 提交包（由 code/setup/make_submission.py 生成）---
+dist/
+
+# --- API 调用缓存（可能含提示词，自行决定是否保留）---
+results/**/api_cache.jsonl
+
+# --- 系统文件 ---
+.DS_Store
+Thumbs.db

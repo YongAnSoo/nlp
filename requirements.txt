@@ -1,0 +1,47 @@
+# =====================================================================
+# 环境 M（modern）：跑模型 / 微调 / 工具演示 / 用户研究
+# Python 3.10 或 3.11（已在 3.11.18 上测试安装与 import）
+#
+# 安装顺序有讲究，请直接用脚本：
+#   Linux/macOS:  bash code/setup/install_env_modern.sh
+#   Windows:      见 README「环境 M」一节的 PowerShell 命令
+#
+# 注意：此环境 **不能** 加载官方 release_data 里的 *_suite.pkl
+#      （pkl 内含 Python≤3.7 的字节码，见 README「两套环境」）。
+#      评测用环境 E：envs/environment-eval-py37.yml
+# =====================================================================
+
+# ---- PyTorch：GPU 用户请先按 https://pytorch.org 选择对应 CUDA 版本安装 ----
+torch>=2.1
+
+# ---- HuggingFace 栈（版本上界是为了互相兼容，测试版本写在右侧注释）----
+transformers>=4.40,<5          # 4.57.6
+huggingface-hub>=0.34,<1.0     # 0.36.2  (transformers 4.x 要求 <1.0)
+datasets>=3.0,<5.1             # 5.0.1   (5.1+ 需要 hub>=1.31，与上面冲突)
+tokenizers>=0.19               # 0.22.2
+accelerate>=0.26               # 1.15.0  (Trainer 需要)
+safetensors
+
+# ---- CheckList 0.0.11 的依赖（checklist 本体单独用 --no-deps 安装）----
+notebook<7                     # 6.5.7   checklist 的 setup.py 调用 notebook.nbextensions（7.x 已删除）
+jupyter
+ipython>=8,<9                  # 8.39.0  IPython 9 去掉了 IPython.core.display.display，checklist.editor 会报错
+ipywidgets>=7.5                # 8.1.9
+spacy>=3.0                     # 3.8.18  Perturb 的部分函数需要 en_core_web_sm
+munch>=2.5                     # 4.0.0
+dill>=0.3.1                    # 0.4.1
+patternfork-nosql              # pattern.en（Perturb 用），首次 import 需要 NLTK wordnet 等语料
+iso-639                        # 0.4.5   依赖 pkg_resources
+setuptools<81                  # 80.10.2 新版 setuptools 移除了 pkg_resources
+nltk                           # 3.10.4
+
+# ---- 通用 ----
+numpy                          # 2.4.6
+pandas                         # 3.1.1
+pyyaml                         # 6.0.3
+matplotlib                     # 3.11.2
+tqdm
+requests
+
+# ---- 测试 ----
+pytest
