@@ -31,5 +31,7 @@
 | A 的结果包（不含 `reference/` 下 4 个官方文件的副本） | `results/sentiment/member_a_results/` |
 | A 的结果报告 | `report/member_a_report.md` |
 | D 的统一环境 checklist39（原样） | `envs/requirements-checklist39.txt` |
+| 课程第一次课 PPT（课程说明、选题清单、提交规范，37 页） | `docs/course/w01_course_intro_slides.pdf` |
+| 论文部分复现报告模板 | `docs/course/report_template.pdf` |
 
 `reference/` 里的 `sentiment_suite.pkl`、`tests_n500` 和作者的 BERT / RoBERTa 预测与官方 release 逐字节一致，sha256 记在 `results/sentiment/member_a_results/experiment_config.json`。可用 `python code/setup/download_release_data.py` 重新取得。
