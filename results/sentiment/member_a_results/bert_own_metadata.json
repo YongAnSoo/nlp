@@ -1,0 +1,21 @@
+{
+  "model_id": "textattack/bert-base-uncased-SST-2",
+  "revision": "95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2",
+  "input_sha256": "8c8820b6031c78278cc6fddcf122e4c1975576e74ff31f9866f4241b12c805ab",
+  "max_length": 512,
+  "batch_size": 32,
+  "torch_version": "2.11.0+cu130",
+  "transformers_version": "4.57.1",
+  "source": "own_model_inference",
+  "n_texts": 87470,
+  "truncated_examples": 0,
+  "neutral_rule": "lo < p_positive < hi",
+  "lo": 0.33333333333333337,
+  "hi": 0.6666666666666666,
+  "exact_boundary_count": 0,
+  "class_counts_negative_neutral_positive": [
+    41428,
+    5871,
+    40171
+  ]
+}

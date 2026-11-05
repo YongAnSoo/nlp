@@ -1,0 +1,16 @@
+Collecting setuptools==67.8.0
+  Downloading setuptools-67.8.0-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 3.9 MB/s eta 0:00:00
+Collecting wheel==0.41.3
+  Downloading wheel-0.41.3-py3-none-any.whl (65 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.8/65.8 kB 5.9 MB/s eta 0:00:00
+Installing collected packages: wheel, setuptools
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.42.0
+    Uninstalling wheel-0.42.0:
+      Successfully uninstalled wheel-0.42.0
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 69.0.3
+    Uninstalling setuptools-69.0.3:
+      Successfully uninstalled setuptools-69.0.3
+Successfully installed setuptools-67.8.0 wheel-0.41.3

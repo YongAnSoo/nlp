@@ -1,0 +1,18 @@
+﻿test_zh,official_test_name,bert_paper_pct,bert_own_pct,bert_delta_pp,roberta_paper_pct,roberta_own_pct,roberta_delta_pp
+中性短句,neutral words in context,94.6,74.4,-20.19999999999999,81.8,81.0,-0.7999999999999972
+情感短句,Sentiment-laden words in context,0.0,0.0,0.0,0.2,1.2,1.0
+替换中性词,change neutral words with BERT,10.2,12.8,2.6000000000000014,10.2,11.0,0.8000000000000007
+添加正面短语,add positive phrases,0.2,0.0,-0.2,10.2,3.2,-6.999999999999999
+添加负面短语,add negative phrases,0.0,4.2,4.2,13.2,5.2,-7.999999999999999
+添加网址和账号名,add random urls and handles,11.4,14.2,2.799999999999999,7.4,11.6,4.199999999999999
+相邻字符拼写错误,typos,5.2,8.8,3.6000000000000005,3.8,4.4,0.6000000000000005
+替换地名,change locations,7.6,11.6,4.0,6.4,4.6,-1.8000000000000007
+替换人名,change names,6.6,8.761329305135952,2.1613293051359523,2.4,4.229607250755287,1.8296072507552874
+过去与现在的情感变化,"used to, but now",18.8,20.8,2.0,11.0,8.4,-2.5999999999999996
+否定负面表达,simple negations: not negative,13.2,13.8,0.6000000000000014,2.6,4.8,2.1999999999999997
+否定中性表达,simple negations: not neutral is still neutral,98.4,96.6,-1.8000000000000114,95.4,93.0,-2.4000000000000057
+句末否定负面表达,"simple negations: I thought x was negative, but it was not (should be neutral or positive)",84.8,89.2,4.400000000000006,7.2,21.2,14.0
+插入中性内容的否定,Hard: Negation of positive with neutral stuff in the middle (should be negative),74.0,86.4,12.400000000000006,30.2,43.4,13.2
+作者观点优先,my opinion is what matters,38.8,46.8,8.0,30.0,33.0,3.0
+问答：Yes,Q & A: yes,3.6,4.0,0.3999999999999999,3.0,0.2,-2.8
+问答：No,Q & A: no,55.4,55.4,0.0,54.8,60.8,6.0

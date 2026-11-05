@@ -1,0 +1,39 @@
+GPU: Tesla T4
+从 0/87470 条继续
+Some weights of the model checkpoint at textattack/roberta-base-SST-2 were not used when initializing RobertaForSequenceClassification: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+- This IS expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+已保存进度：3200/87470
+已保存进度：6400/87470
+已保存进度：9600/87470
+已保存进度：12800/87470
+已保存进度：16000/87470
+已保存进度：19200/87470
+已保存进度：22400/87470
+已保存进度：25600/87470
+已保存进度：28800/87470
+已保存进度：32000/87470
+已保存进度：35200/87470
+已保存进度：38400/87470
+已保存进度：41600/87470
+已保存进度：44800/87470
+已保存进度：48000/87470
+已保存进度：51200/87470
+已保存进度：54400/87470
+已保存进度：57600/87470
+已保存进度：60800/87470
+已保存进度：64000/87470
+已保存进度：67200/87470
+已保存进度：70400/87470
+已保存进度：73600/87470
+已保存进度：76800/87470
+已保存进度：80000/87470
+已保存进度：83200/87470
+已保存进度：86400/87470
+已保存进度：87470/87470
+
+ROBERTA_INFERENCE_OK
+截断样本数: 0
+负面/中性/正面数量: [38541, 7999, 40930]
+备份文件: /kaggle/working/member_a_both_models_backup.zip
+请现在手动下载备份，下载完成后再继续！

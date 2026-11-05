@@ -1,0 +1,77 @@
+﻿source,model,test,capability,type,n_run,n_valid,n_failed,failure_rate_pct
+own_model_inference,bert,single positive words,Vocabulary,MFT,34,34,0,0.0
+own_model_inference,bert,single negative words,Vocabulary,MFT,35,35,0,0.0
+own_model_inference,bert,single neutral words,Vocabulary,MFT,13,13,13,100.0
+own_model_inference,bert,Sentiment-laden words in context,Vocabulary,MFT,500,500,0,0.0
+own_model_inference,bert,neutral words in context,Vocabulary,MFT,500,500,372,74.4
+own_model_inference,bert,intensifiers,Vocabulary,DIR,500,500,7,1.4
+own_model_inference,bert,reducers,Vocabulary,DIR,500,0,0,
+own_model_inference,bert,change neutral words with BERT,Vocabulary,INV,500,500,64,12.8
+own_model_inference,bert,add positive phrases,Vocabulary,DIR,500,500,0,0.0
+own_model_inference,bert,add negative phrases,Vocabulary,DIR,500,500,21,4.2
+own_model_inference,bert,add random urls and handles,Robustness,INV,500,500,71,14.2
+own_model_inference,bert,punctuation,Robustness,INV,500,500,28,5.6
+own_model_inference,bert,typos,Robustness,INV,500,500,44,8.8
+own_model_inference,bert,2 typos,Robustness,INV,500,500,69,13.8
+own_model_inference,bert,contractions,Robustness,INV,500,500,25,5.0
+own_model_inference,bert,change names,NER,INV,331,331,29,8.761329305135952
+own_model_inference,bert,change locations,NER,INV,500,500,58,11.6
+own_model_inference,bert,change numbers,NER,INV,500,500,16,3.2
+own_model_inference,bert,"used to, but now",Temporal,MFT,500,500,104,20.8
+own_model_inference,bert,"""used to"" should reduce",Temporal,DIR,500,6,4,66.66666666666667
+own_model_inference,bert,protected: race,Fairness,INV,500,500,418,83.6
+own_model_inference,bert,protected: sexual,Fairness,INV,500,500,423,84.6
+own_model_inference,bert,protected: religion,Fairness,INV,500,500,495,99.0
+own_model_inference,bert,protected: nationality,Fairness,INV,500,500,109,21.8
+own_model_inference,bert,simple negations: negative,Negation,MFT,500,500,41,8.2
+own_model_inference,bert,simple negations: not negative,Negation,MFT,500,500,69,13.8
+own_model_inference,bert,simple negations: not neutral is still neutral,Negation,MFT,500,500,483,96.6
+own_model_inference,bert,"simple negations: I thought x was positive, but it was not (should be negative)",Negation,MFT,500,500,0,0.0
+own_model_inference,bert,"simple negations: I thought x was negative, but it was not (should be neutral or positive)",Negation,MFT,500,500,446,89.2
+own_model_inference,bert,simple negations: but it was not (neutral) should still be neutral,Negation,MFT,500,500,500,100.0
+own_model_inference,bert,Hard: Negation of positive with neutral stuff in the middle (should be negative),Negation,MFT,500,500,432,86.4
+own_model_inference,bert,Hard: Negation of negative with neutral stuff in the middle (should be positive or neutral),Negation,MFT,500,500,486,97.2
+own_model_inference,bert,"negation of neutral with neutral in the middle, should still neutral",Negation,MFT,500,500,430,86.0
+own_model_inference,bert,my opinion is what matters,SRL,MFT,500,500,234,46.8
+own_model_inference,bert,Q & A: yes,SRL,MFT,500,500,20,4.0
+own_model_inference,bert,Q & A: yes (neutral),SRL,MFT,500,500,490,98.0
+own_model_inference,bert,Q & A: no,SRL,MFT,500,500,277,55.4
+own_model_inference,bert,Q & A: no (neutral),SRL,MFT,500,500,500,100.0
+own_model_inference,roberta,single positive words,Vocabulary,MFT,34,34,1,2.9411764705882355
+own_model_inference,roberta,single negative words,Vocabulary,MFT,35,35,2,5.714285714285714
+own_model_inference,roberta,single neutral words,Vocabulary,MFT,13,13,13,100.0
+own_model_inference,roberta,Sentiment-laden words in context,Vocabulary,MFT,500,500,6,1.2
+own_model_inference,roberta,neutral words in context,Vocabulary,MFT,500,500,405,81.0
+own_model_inference,roberta,intensifiers,Vocabulary,DIR,500,496,6,1.2096774193548387
+own_model_inference,roberta,reducers,Vocabulary,DIR,500,22,2,9.090909090909092
+own_model_inference,roberta,change neutral words with BERT,Vocabulary,INV,500,500,55,11.0
+own_model_inference,roberta,add positive phrases,Vocabulary,DIR,500,500,16,3.2
+own_model_inference,roberta,add negative phrases,Vocabulary,DIR,500,500,26,5.2
+own_model_inference,roberta,add random urls and handles,Robustness,INV,500,500,58,11.6
+own_model_inference,roberta,punctuation,Robustness,INV,500,500,25,5.0
+own_model_inference,roberta,typos,Robustness,INV,500,500,22,4.4
+own_model_inference,roberta,2 typos,Robustness,INV,500,500,35,7.0
+own_model_inference,roberta,contractions,Robustness,INV,500,500,5,1.0
+own_model_inference,roberta,change names,NER,INV,331,331,14,4.229607250755287
+own_model_inference,roberta,change locations,NER,INV,500,500,23,4.6
+own_model_inference,roberta,change numbers,NER,INV,500,500,12,2.4
+own_model_inference,roberta,"used to, but now",Temporal,MFT,500,500,42,8.4
+own_model_inference,roberta,"""used to"" should reduce",Temporal,DIR,500,19,5,26.31578947368421
+own_model_inference,roberta,protected: race,Fairness,INV,500,500,307,61.4
+own_model_inference,roberta,protected: sexual,Fairness,INV,500,500,462,92.4
+own_model_inference,roberta,protected: religion,Fairness,INV,500,500,366,73.2
+own_model_inference,roberta,protected: nationality,Fairness,INV,500,500,43,8.6
+own_model_inference,roberta,simple negations: negative,Negation,MFT,500,500,6,1.2
+own_model_inference,roberta,simple negations: not negative,Negation,MFT,500,500,24,4.8
+own_model_inference,roberta,simple negations: not neutral is still neutral,Negation,MFT,500,500,465,93.0
+own_model_inference,roberta,"simple negations: I thought x was positive, but it was not (should be negative)",Negation,MFT,500,500,7,1.4
+own_model_inference,roberta,"simple negations: I thought x was negative, but it was not (should be neutral or positive)",Negation,MFT,500,500,106,21.2
+own_model_inference,roberta,simple negations: but it was not (neutral) should still be neutral,Negation,MFT,500,500,460,92.0
+own_model_inference,roberta,Hard: Negation of positive with neutral stuff in the middle (should be negative),Negation,MFT,500,500,217,43.4
+own_model_inference,roberta,Hard: Negation of negative with neutral stuff in the middle (should be positive or neutral),Negation,MFT,500,500,466,93.2
+own_model_inference,roberta,"negation of neutral with neutral in the middle, should still neutral",Negation,MFT,500,500,495,99.0
+own_model_inference,roberta,my opinion is what matters,SRL,MFT,500,500,165,33.0
+own_model_inference,roberta,Q & A: yes,SRL,MFT,500,500,1,0.2
+own_model_inference,roberta,Q & A: yes (neutral),SRL,MFT,500,500,387,77.4
+own_model_inference,roberta,Q & A: no,SRL,MFT,500,500,304,60.8
+own_model_inference,roberta,Q & A: no (neutral),SRL,MFT,500,500,500,100.0

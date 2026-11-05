@@ -1,0 +1,20 @@
+{
+  "checklist_commit": "4e6e5e33a26f30c20ed602b2050f6c73e123cc23",
+  "n_texts": 87470,
+  "sha256": {
+    "tests_n500": "8c8820b6031c78278cc6fddcf122e4c1975576e74ff31f9866f4241b12c805ab",
+    "sentiment_suite.pkl": "816d663795d6776be14ae2702570192e9f7dede5fa165f9ba997cef5d2fa2a0b",
+    "official_bert_predictions.txt": "e8d623077eb03130aa67f61ba54867a9920d11244c6f31cbb4e935a568a19690",
+    "official_roberta_predictions.txt": "7e2ee033db114487d455e72f0397eb556c117511001fef123494a905f22ed34f"
+  },
+  "models": {
+    "bert": {
+      "id": "textattack/bert-base-uncased-SST-2",
+      "revision": "95f0f6f859b35c8ff0863ae3cd4e2dbc702c0ae2"
+    },
+    "roberta": {
+      "id": "textattack/roberta-base-SST-2",
+      "revision": "84ee248b91053ef5d0c748bbac4edfba1cf89584"
+    }
+  }
+}

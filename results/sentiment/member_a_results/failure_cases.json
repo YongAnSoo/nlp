@@ -1,0 +1,222 @@
+[
+  {
+    "test_zh": "中性短句",
+    "official_test_name": "neutral words in context",
+    "selection": "both_fail",
+    "suite_data_index": 1382,
+    "text": "That was an international crew.",
+    "expected": "neutral",
+    "bert_prediction": "positive",
+    "bert_failed": true,
+    "bert_confs": [
+      0.005692303181,
+      0.0,
+      0.994307696819
+    ],
+    "roberta_prediction": "positive",
+    "roberta_failed": true,
+    "roberta_confs": [
+      0.083965778351,
+      0.0,
+      0.916034221649
+    ]
+  },
+  {
+    "test_zh": "中性短句",
+    "official_test_name": "neutral words in context",
+    "selection": "one_model_fails",
+    "suite_data_index": 111,
+    "text": "That pilot is British.",
+    "expected": "neutral",
+    "bert_prediction": "neutral",
+    "bert_failed": false,
+    "bert_confs": [
+      0.3827457726,
+      0.6172542274,
+      0.0
+    ],
+    "roberta_prediction": "positive",
+    "roberta_failed": true,
+    "roberta_confs": [
+      0.247147619724,
+      0.0,
+      0.752852380276
+    ]
+  },
+  {
+    "test_zh": "否定中性表达",
+    "official_test_name": "simple negations: not neutral is still neutral",
+    "selection": "both_fail",
+    "suite_data_index": 995,
+    "text": "That was not an Australian pilot.",
+    "expected": "neutral",
+    "bert_prediction": "negative",
+    "bert_failed": true,
+    "bert_confs": [
+      0.990843135864,
+      0.0,
+      0.009156864136
+    ],
+    "roberta_prediction": "negative",
+    "roberta_failed": true,
+    "roberta_confs": [
+      0.740176618099,
+      0.0,
+      0.259823381901
+    ]
+  },
+  {
+    "test_zh": "否定中性表达",
+    "official_test_name": "simple negations: not neutral is still neutral",
+    "selection": "one_model_fails",
+    "suite_data_index": 2022,
+    "text": "It is not an Israeli crew.",
+    "expected": "neutral",
+    "bert_prediction": "negative",
+    "bert_failed": true,
+    "bert_confs": [
+      0.980149010196,
+      0.0,
+      0.019850989804
+    ],
+    "roberta_prediction": "neutral",
+    "roberta_failed": false,
+    "roberta_confs": [
+      0.212628722191,
+      0.787371277809,
+      0.0
+    ]
+  },
+  {
+    "test_zh": "句末否定负面表达",
+    "official_test_name": "simple negations: I thought x was negative, but it was not (should be neutral or positive)",
+    "selection": "both_fail",
+    "suite_data_index": 636,
+    "text": "I thought this cabin crew would be creepy, but it was not.",
+    "expected": "neutral or positive",
+    "bert_prediction": "negative",
+    "bert_failed": true,
+    "bert_confs": [
+      0.984497537836,
+      0.0,
+      0.015502462164
+    ],
+    "roberta_prediction": "negative",
+    "roberta_failed": true,
+    "roberta_confs": [
+      0.860107690096,
+      0.0,
+      0.139892309904
+    ]
+  },
+  {
+    "test_zh": "句末否定负面表达",
+    "official_test_name": "simple negations: I thought x was negative, but it was not (should be neutral or positive)",
+    "selection": "one_model_fails",
+    "suite_data_index": 1410,
+    "text": "I thought this staff would be boring, but it wasn't.",
+    "expected": "neutral or positive",
+    "bert_prediction": "negative",
+    "bert_failed": true,
+    "bert_confs": [
+      0.980764603242,
+      0.0,
+      0.019235396758
+    ],
+    "roberta_prediction": "neutral",
+    "roberta_failed": false,
+    "roberta_confs": [
+      0.0,
+      0.501686871052,
+      0.498313128948
+    ]
+  },
+  {
+    "test_zh": "插入中性内容的否定",
+    "official_test_name": "Hard: Negation of positive with neutral stuff in the middle (should be negative)",
+    "selection": "both_fail",
+    "suite_data_index": 507,
+    "text": "I wouldn't say, given that I am from Brazil, that this food was extraordinary.",
+    "expected": "negative",
+    "bert_prediction": "positive",
+    "bert_failed": true,
+    "bert_confs": [
+      0.001147150993,
+      0.0,
+      0.998852849007
+    ],
+    "roberta_prediction": "neutral",
+    "roberta_failed": true,
+    "roberta_confs": [
+      0.0,
+      0.757372021675,
+      0.242627978325
+    ]
+  },
+  {
+    "test_zh": "插入中性内容的否定",
+    "official_test_name": "Hard: Negation of positive with neutral stuff in the middle (should be negative)",
+    "selection": "one_model_fails",
+    "suite_data_index": 242,
+    "text": "I don't think, given my history with airplanes, that that is an incredible airline.",
+    "expected": "negative",
+    "bert_prediction": "neutral",
+    "bert_failed": true,
+    "bert_confs": [
+      0.0,
+      0.516968488693,
+      0.483031511307
+    ],
+    "roberta_prediction": "negative",
+    "roberta_failed": false,
+    "roberta_confs": [
+      0.860533311963,
+      0.0,
+      0.139466688037
+    ]
+  },
+  {
+    "test_zh": "作者观点优先",
+    "official_test_name": "my opinion is what matters",
+    "selection": "both_fail",
+    "suite_data_index": 4675,
+    "text": "I think you are lousy, but I had heard you were excellent.",
+    "expected": "negative",
+    "bert_prediction": "positive",
+    "bert_failed": true,
+    "bert_confs": [
+      0.000923871994,
+      0.0,
+      0.999076128006
+    ],
+    "roberta_prediction": "neutral",
+    "roberta_failed": true,
+    "roberta_confs": [
+      0.0,
+      0.845658004284,
+      0.154341995716
+    ]
+  },
+  {
+    "test_zh": "作者观点优先",
+    "official_test_name": "my opinion is what matters",
+    "selection": "one_model_fails",
+    "suite_data_index": 4932,
+    "text": "Some people think you are amazing, I think you are nasty.",
+    "expected": "negative",
+    "bert_prediction": "neutral",
+    "bert_failed": true,
+    "bert_confs": [
+      0.059598326683,
+      0.940401673317,
+      0.0
+    ],
+    "roberta_prediction": "negative",
+    "roberta_failed": false,
+    "roberta_confs": [
+      0.960212081671,
+      0.0,
+      0.039787918329
+    ]
+  }
+]
